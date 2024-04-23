@@ -1,1 +1,30 @@
-[]
+[
+    {
+      "id": 1,
+      "username": "irie_man",
+      "email": "irie@example.com",
+      "password": "hashed_password_here",
+      "name": "Bob Marley",
+      "age": 36,
+      "location": "Kingston"
+    },
+    {
+      "id": 2,
+      "username": "jamaican_queen",
+      "email": "queen@example.com",
+      "password": "hashed_password_here",
+      "name": "Nanny of the Maroons",
+      "age": 42,
+      "location": "Portland"
+    },
+    {
+      "id": 3,
+      "username": "reggae_lover",
+      "email": "reggae@example.com",
+      "password": "hashed_password_here",
+      "name": "Jimmy Cliff",
+      "age": 50,
+      "location": "Montego Bay"
+    }
+  ]
+  

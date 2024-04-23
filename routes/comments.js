@@ -1,52 +1,48 @@
+// comments.js
+
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
-const path = require('path');
 
-const commentsFilePath = path.join(__dirname, '..', 'data', 'comments.json');
+// Sample data for comments
+let comments = [
+  { id: 1, recipeId: 1, text: 'This jerk chicken recipe is amazing!' },
+  { id: 2, recipeId: 1, text: 'Best jerk chicken I ever had!' },
+  { id: 3, recipeId: 2, text: 'Ackee and saltfish is my favorite dish!' },
+  { id: 4, recipeId: 3, text: 'Curry goat is delicious, but spicy!' },
+];
 
-// GET all comments
-router.get('/', (req, res) => {
-  const comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf8'));
-  res.json(comments);
+// GET all comments for a specific recipe
+router.get('/:recipeId', (req, res) => {
+  const { recipeId } = req.params;
+  const recipeComments = comments.filter(comment => comment.recipeId === parseInt(recipeId));
+  res.json(recipeComments);
 });
 
-// POST a new comment
+// POST a new comment for a specific recipe
 router.post('/', (req, res) => {
-  const newComment = req.body;
-  const comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf8'));
+  const { recipeId, text } = req.body;
+  if (!recipeId || !text) {
+    return res.status(400).json({ error: 'Recipe ID and text are required' });
+  }
+
+  const newComment = {
+    id: comments.length + 1,
+    recipeId: parseInt(recipeId),
+    text
+  };
   comments.push(newComment);
-  fs.writeFileSync(commentsFilePath, JSON.stringify(comments, null, 2));
   res.status(201).json(newComment);
 });
 
-// PUT/UPDATE a comment by ID
-router.put('/:commentId', (req, res) => {
-  const commentId = req.params.commentId;
-  const updatedComment = req.body;
-  const comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf8'));
-  const index = comments.findIndex(comment => comment.id === commentId);
-  if (index !== -1) {
-    comments[index] = { ...comments[index], ...updatedComment };
-    fs.writeFileSync(commentsFilePath, JSON.stringify(comments, null, 2));
-    res.json(comments[index]);
-  } else {
-    res.status(404).json({ error: 'Comment not found' });
-  }
-});
-
-// DELETE a comment by ID
+// DELETE a comment
 router.delete('/:commentId', (req, res) => {
-  const commentId = req.params.commentId;
-  const comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf8'));
-  const index = comments.findIndex(comment => comment.id === commentId);
-  if (index !== -1) {
-    const deletedComment = comments.splice(index, 1)[0];
-    fs.writeFileSync(commentsFilePath, JSON.stringify(comments, null, 2));
-    res.json(deletedComment);
-  } else {
-    res.status(404).json({ error: 'Comment not found' });
+  const { commentId } = req.params;
+  const index = comments.findIndex(comment => comment.id === parseInt(commentId));
+  if (index === -1) {
+    return res.status(404).json({ error: 'Comment not found' });
   }
+  comments.splice(index, 1);
+  res.sendStatus(204);
 });
 
 module.exports = router;

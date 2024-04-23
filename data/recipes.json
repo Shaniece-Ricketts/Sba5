@@ -1,1 +1,45 @@
-[]
+[
+    {
+      "id": 1,
+      "name": "Jerk Chicken",
+      "category": "Main Course",
+      "image": "/images/jerk-chicken.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Ackee and Saltfish",
+      "category": "Main Course",
+      "image": "/images/ackee-saltfish.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Curry Goat",
+      "category": "Main Course",
+      "image": "/images/curry-goat.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "Escovitch Fish",
+      "category": "Main Course",
+      "image": "/images/escovitch-fish.jpeg"
+    },
+    {
+      "id": 5,
+      "name": "Jamaican Patties",
+      "category": "Appetizer",
+      "image": "/images/jamaican-patties.jpeg"
+    },
+    {
+      "id": 6,
+      "name": "Rice and Peas",
+      "category": "Side Dish",
+      "image": "/images/rice-peas.jpeg"
+    },
+    {
+      "id": 7,
+      "name": "Jamaican Rum Cake",
+      "category": "Dessert",
+      "image": "/images/jamaican-rum-cake.jpeg"
+    }
+  ]
+  

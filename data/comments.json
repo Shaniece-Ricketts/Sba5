@@ -1,1 +1,15 @@
-[]
+[
+    {
+      "id": 1,
+      "recipeId": 1,
+      "text": "This jerk chicken recipe was amazing!",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "recipeId": 2,
+      "text": "Ackee and saltfish is my favorite dish!",
+      "userId": 2
+    }
+  ]
+  

@@ -7,14 +7,28 @@
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
-    <h1>Jamaican Recipes</h1>
-    <div id="recipe-list">
-        <h2>All Recipes</h2>
-        <ul>
-            <% recipes.forEach(recipe => { %>
-                <li><strong><%= recipe.name %></strong> - <%= recipe.category %></li>
-            <% }); %>
-        </ul>
+    <div class="container">
+        <h1>Jamaican Recipes</h1>
+        <div id="recipe-list">
+            <h2>All Recipes</h2>
+            <ul>
+                <% recipes.forEach(recipe => { %>
+                    <li class="recipe-item">
+                        <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
+                        <div class="recipe-info">
+                            <h3><%= recipe.name %></h3>
+                            <p><strong>Category:</strong> <%= recipe.category %></p>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        
+        <div id="add-recipe">
+            <h2>Add a New Recipe</h2>
+            <a href="/recipes/new">Add a New Recipe</a>
+        </div>
     </div>
 </body>
 </html>
+
