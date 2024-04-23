@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamaican Recipes</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <h1>Jamaican Recipes</h1>
+    <div id="recipe-list">
+        <h2>All Recipes</h2>
+        <ul>
+            <% recipes.forEach(recipe => { %>
+                <li><strong><%= recipe.name %></strong> - <%= recipe.category %></li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>
